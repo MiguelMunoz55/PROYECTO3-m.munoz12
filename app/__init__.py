@@ -1,7 +1,6 @@
 from flask import Flask
 from app.config.db import db
 from flask_login import LoginManager
-from app.models.usuario import Usuario  # Asegúrate de importar el modelo
 
 login_manager = LoginManager()
 
@@ -13,14 +12,11 @@ def create_app(config):
     login_manager.init_app(app)
     login_manager.login_view = "auth.login"
 
-    @login_manager.user_loader  # ✅ Definir aquí dentro de create_app()
-    def load_user(user_id):
-        return Usuario.query.get(int(user_id))
-
     with app.app_context():
+        from app.models.usuario import Usuario
         db.create_all()
 
-        # Importa y registra los blueprints dentro del contexto
+        # ✅ Importa y registra los blueprints aquí dentro del contexto
         from app.controllers.home_controller import home_blueprint
         from app.controllers.auth_controller import auth_blueprint
         from app.controllers.admin_controller import admin_blueprint
