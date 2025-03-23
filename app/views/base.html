@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Heladería Digital{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Heladería Digital</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                {% if current_user.is_authenticated %}
+                    {% if current_user.rol == "admin" %}
+                        <li><a href="{{ url_for('admin.dashboard') }}">Panel Admin</a></li>
+                    {% elif current_user.rol == "empleado" %}
+                        <li><a href="{{ url_for('empleado.dashboard') }}">Panel Empleado</a></li>
+                    {% elif current_user.rol == "usuario" %}
+                        <li><a href="{{ url_for('user.dashboard') }}">Mi Cuenta</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Iniciar Sesión</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Heladería Digital. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

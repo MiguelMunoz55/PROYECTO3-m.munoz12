@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación API</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1, h2 { color: #333; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+        code { color: #c7254e; background: #f9f2f4; padding: 2px 4px; }
+    </style>
+</head>
+<body>
+    <h1>Documentación de la API</h1>
+    
+    <h2>Consultar todos los productos</h2>
+    <p><strong>Método:</strong> GET</p>
+    <p><strong>Endpoint:</strong> <code>/api/productos</code></p>
+    <p><strong>Descripción:</strong> Obtiene la lista de todos los productos.</p>
+    
+    <h2>Consultar un producto por ID</h2>
+    <p><strong>Método:</strong> GET</p>
+    <p><strong>Endpoint:</strong> <code>/api/producto/&lt;int:id&gt;</code></p>
+    <p><strong>Descripción:</strong> Obtiene la información de un producto específico por su ID.</p>
+    
+    <h2>Consultar un producto por nombre</h2>
+    <p><strong>Método:</strong> GET</p>
+    <p><strong>Endpoint:</strong> <code>/api/producto/nombre/&lt;string:nombre&gt;</code></p>
+    <p><strong>Descripción:</strong> Obtiene la información de un producto específico por su nombre.</p>
+    
+    <h2>Consultar calorías de un producto</h2>
+    <p><strong>Método:</strong> GET</p>
+    <p><strong>Endpoint:</strong> <code>/api/producto/&lt;int:id&gt;/calorias</code></p>
+    <p><strong>Descripción:</strong> Calcula las calorías totales del producto basado en sus ingredientes.</p>
+    
+    <h2>Reabastecer producto (Solo admin y empleados)</h2>
+    <p><strong>Método:</strong> POST</p>
+    <p><strong>Endpoint:</strong> <code>/api/producto/&lt;int:id&gt;/reabastecer</code></p>
+    <p><strong>Descripción:</strong> Aumenta el inventario de los ingredientes del producto.</p>
+    
+    <h2>Renovar inventario de un producto (Solo admin y empleados)</h2>
+    <p><strong>Método:</strong> POST</p>
+    <p><strong>Endpoint:</strong> <code>/api/producto/&lt;int:id&gt;/renovar</code></p>
+    <p><strong>Descripción:</strong> Si el inventario de algún ingrediente está en 0, lo reinicia a 10 unidades.</p>
+    
+    <h2>Vender producto</h2>
+    <p><strong>Método:</strong> POST</p>
+    <p><strong>Endpoint:</strong> <code>/api/producto/&lt;int:id&gt;/vender</code></p>
+    <p><strong>Descripción:</strong> Reduce los ingredientes del producto al realizar una venta.</p>
+    
+    <h2>Consultar todos los ingredientes (Solo admin y empleados)</h2>
+    <p><strong>Método:</strong> GET</p>
+    <p><strong>Endpoint:</strong> <code>/api/ingredientes</code></p>
+    <p><strong>Descripción:</strong> Obtiene la lista de todos los ingredientes.</p>
+    
+    <h2>Consultar un ingrediente por ID</h2>
+    <p><strong>Método:</strong> GET</p>
+    <p><strong>Endpoint:</strong> <code>/api/ingrediente/&lt;int:id&gt;</code></p>
+    <p><strong>Descripción:</strong> Obtiene la información de un ingrediente específico por su ID.</p>
+    
+    <h2>Consultar si un ingrediente es sano</h2>
+    <p><strong>Método:</strong> GET</p>
+    <p><strong>Endpoint:</strong> <code>/api/ingrediente/&lt;int:id&gt;/sano</code></p>
+    <p><strong>Descripción:</strong> Retorna si un ingrediente es saludable o no.</p>
+</body>
+</html>
