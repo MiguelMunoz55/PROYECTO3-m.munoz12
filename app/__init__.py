@@ -12,6 +12,12 @@ def create_app(config):
     login_manager.init_app(app)
     login_manager.login_view = "auth.login"
 
+    # 🔥 Agrega este print para ver si la variable se carga
+    print("DATABASE_URI en Render:", app.config.get("SQLALCHEMY_DATABASE_URI"))
+
+    if not app.config.get("SQLALCHEMY_DATABASE_URI"):
+        raise RuntimeError("SQLALCHEMY_DATABASE_URI no está definida.")
+
     with app.app_context():
         from app.models.usuario import Usuario
         db.create_all()
