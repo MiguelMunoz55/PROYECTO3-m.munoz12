@@ -1,0 +1,8 @@
+Buen dia , Al abrir la página web se crea la base de datos sin usuarios .
+Se debe crear los usuarios desde insertar_usuarios.py
+En la página web en el principal sale la información que puede ver cualquier persona , y la documentación, hay otra opcion de Iniciar sesion.
+Se deben crear los ingredientes y luego los productos.
+En la documentación esta como entrar a la api.
+En el repositorio esta el word con los pantallazos de los endpoints
+
+La url del repositorio es https://github.com/MiguelMunoz55/PROYECTO3-m.munoz12
