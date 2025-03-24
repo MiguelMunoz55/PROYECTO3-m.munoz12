@@ -60,28 +60,28 @@ def get_calorias(id):
 
 # Consultar rentabilidad (Solo admin y empleados)
 @api_blueprint.route("/producto/<int:id>/rentabilidad", methods=["GET"])
-@login_required
+# @login_required
 def get_rentabilidad(id):
-    if not (is_admin() or is_employee()):
-        return jsonify({"error": "No autorizado"}), 403
+    # if not (is_admin() or is_employee()):
+    #     return jsonify({"error": "No autorizado"}), 403
     producto = Producto.query.get_or_404(id)
     return jsonify({"rentabilidad": producto.calcular_rentabilidad()})
 
 # Consultar costo de producción (Solo admin y empleados)
 @api_blueprint.route("/producto/<int:id>/costo", methods=["GET"])
-@login_required
+# @login_required
 def get_costo(id):
-    if not (is_admin() or is_employee()):
-        return jsonify({"error": "No autorizado"}), 403
+    # if not (is_admin() or is_employee()):
+    #     return jsonify({"error": "No autorizado"}), 403
     producto = Producto.query.get_or_404(id)
     return jsonify({"costo": producto.calcular_costo()})
 
 # Vender producto (Clientes y autenticados pueden acceder)
 @api_blueprint.route("/producto/<int:id>/vender", methods=["POST", "GET"])
-@login_required
+# @login_required
 def vender_producto(id):
-    if not (is_admin() or is_employee() or is_client()):
-        return jsonify({"error": "No autorizado"}), 403
+    # if not (is_admin() or is_employee() or is_client()):
+    #     return jsonify({"error": "No autorizado"}), 403
     producto = Producto.query.get_or_404(id)
     try:
         mensaje = producto.consumir_ingredientes()
@@ -108,19 +108,19 @@ def vender_producto(id):
 
 # Consultar todos los ingredientes (Solo admin y empleados)
 @api_blueprint.route("/ingredientes", methods=["GET"])
-@login_required
+# @login_required
 def get_ingredientes():
-    if not (is_admin() or is_employee()):
-        return jsonify({"error": "No autorizado"}), 403
+    # if not (is_admin() or is_employee()):
+    #     return jsonify({"error": "No autorizado"}), 403
     ingredientes = Ingrediente.query.all()
     return jsonify([ingrediente.to_dict() for ingrediente in ingredientes])
 
 # Consultar un ingrediente por ID
 @api_blueprint.route("/ingrediente/<int:id>", methods=["GET"])
-@login_required
+# @login_required
 def get_ingrediente(id):
-    if not (is_admin() or is_employee()):
-        return jsonify({"error": "No autorizado"}), 403
+    # if not (is_admin() or is_employee()):
+    #     return jsonify({"error": "No autorizado"}), 403
     ingrediente = Ingrediente.query.get_or_404(id)
     return jsonify(ingrediente.to_dict())
 
@@ -143,10 +143,10 @@ def get_sano(id):
 
 # Reabastecer producto (Solo admin y empleados)
 @api_blueprint.route("/producto/<int:id>/reabastecer", methods=["POST", "GET"])
-@login_required
+# @login_required
 def reabastecer_producto(id):
-    if not (is_admin() or is_employee()):
-        return jsonify({"error": "No autorizado"}), 403
+    # if not (is_admin() or is_employee()):
+    #     return jsonify({"error": "No autorizado"}), 403
     
     producto = Producto.query.get_or_404(id)
 
